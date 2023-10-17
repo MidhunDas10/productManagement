@@ -1,0 +1,52 @@
+
+
+<div class="row">
+  <div class="col-2">
+    <h2 class="m-2 ">Filters</h2>
+    <section class="example-section m-2" >
+      <p><mat-checkbox [(ngModel)]="pricerangeFilterActive" (change)="filterActiveValueChange($event,'priceFilter')">Price Range Filter</mat-checkbox></p>
+      <mat-slider  min="0" max="150000" (change)="onFilterValueChange()" step="1000" showTickMarks discrete [displayWith]="formatLabel" #slider>
+          <input [(ngModel)]="minPrice" [value]="minPrice"  matSliderStartThumb>
+          <input [(ngModel)]="maxPrice" [value]="maxPrice"  matSliderEndThumb>
+      </mat-slider>
+      <p><mat-checkbox [(ngModel)]="ratingFilterActive" (change)="filterActiveValueChange($event,'ratingFilter')">Rating Filter</mat-checkbox></p>
+      <mat-slider  min="0" max="5" (change)="onFilterValueChange()" step="1" showTickMarks discrete >
+        <input [(ngModel)]="minRating" [value]="minRating"  matSliderStartThumb>
+        <input [(ngModel)]="maxRating" [value]="maxRating"  matSliderEndThumb>
+    </mat-slider>
+    </section>
+    <section class=" pt-4 example-section" >
+      <p><mat-checkbox [(ngModel)]="inStockValue" value="after">In Stock</mat-checkbox></p>
+    </section>
+
+  </div>
+  <div class="col-10" *ngIf="dataReady">
+    <div class="row w-100 justify-content-end">
+      <div class="search-hero">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Search by product name">
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-3" *ngFor="let product of products | filter:searchText" [ngClass]="{'display-none' : product.isTrash || (!product.inStock && inStockValue) }">
+        <mat-card class="cursor-pointer mat-card m-2 p-0">
+          <mat-card-header  (click)="onProductCardClick(product)">
+            <mat-card-title>{{product.name}}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image class="mat-card-image" [src] = "product.imageUrl" alt="Photo" matTooltip="Click to see detail view" (click)="onProductCardClick(product)">
+          <mat-card-content   (click)="onProductCardClick(product)">
+            <p> ₹ {{product.price}}</p>
+            <p> {{product.shortDescription}}</p>
+          </mat-card-content>
+          <mat-card-actions class="justify-content-end">
+            <button mat-raised-button class="small m-1 mat-mini-button" color="primary" >LIKE</button>
+            <button  mat-raised-button class="small  m-1 mat-mini-button" color="warn" (click)="onRemoveClick(product)" >REMOVE</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <button  mat-fab class="add-button" class=" add-button" color="primary" (click)="onAddProductClick()" >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<!-- <mat-sidenav-container class="example-container" *ngIf="true">
+  <mat-sidenav mode="side" opened>Sidenav content</mat-sidenav>
+  <mat-sidenav mode="side" >Sidenav content</mat-sidenav>
+  <mat-sidenav-content>Main content</mat-sidenav-content>
+</mat-sidenav-container> -->
+
+<mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <button mat-icon-button  (click)="sidenav.toggle();">
+          <mat-icon>menu</mat-icon>
+        </button>
+          Mobile Store
+      </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav  opened="true" mode="side" #sidenav>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/home"><mat-icon class="pt-1 ">home</mat-icon>HOME</a>
+      <a mat-list-item routerLink="/trash"><mat-icon class="pt-1">delete</mat-icon>TRASH</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 90vh;">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
