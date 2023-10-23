@@ -1,6 +1,7 @@
 <div class=" mt-4 mx-4 row dialog-content">
   <div class="col-11">
-    <h2 class="m-0">ADD PRODUCT</h2>
+    <h2 class="m-0" *ngIf="data.mode === 'add'">ADD PRODUCT</h2>
+    <h2 class="m-0" *ngIf="data.mode === 'edit'">EDIT PRODUCT</h2>
   </div>
   <div class="col-1 align-self-center">
     <button mat-button color="warn" (click)="onCloseButtonClick()">
@@ -101,11 +102,10 @@
   </div>
 
   <div class="form-group">
+    <mat-checkbox formControlName="inStock" >  </mat-checkbox>
     <label for="inStock">In Stock</label>
-    <input type="checkbox" id="inStock" formControlName="inStock"
-    [class.is-invalid]="this.errorService.checkError(productForm,'inStock')" />
-    <div *ngIf="this.errorService.checkError(productForm,'inStock')" class="text-danger">Invalid Data.</div>
   </div>
 
-  <button [disabled]="productForm.invalid" type="button" (click)="onSubmit()" class="btn btn-primary">Add Product</button>
+  <button *ngIf="data.mode === 'add'" type="button" (click)="onSubmit()" class="btn btn-primary">Add Product</button>
+  <button *ngIf="data.mode === 'edit'" type="button" (click)="onSubmit()" class="btn btn-primary">Update Changes</button>
 </div>

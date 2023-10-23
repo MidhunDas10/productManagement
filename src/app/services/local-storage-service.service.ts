@@ -32,6 +32,7 @@ export class LocalStorageServiceService {
         imageUrl: 'assets/iphone13.jpg',
         isTrash: false,
         inStock: true,
+        location: 'kochi'
       },
       {
         id: 'iphone14',
@@ -45,6 +46,7 @@ export class LocalStorageServiceService {
         imageUrl: 'assets/iphone14.jpg',
         isTrash: false,
         inStock: false,
+        location: 'banglore'
       },
       {
         id: 'iphone13mini',
@@ -58,6 +60,7 @@ export class LocalStorageServiceService {
         imageUrl: 'assets/iphone13mini.jpg',
         isTrash: false,
         inStock: false,
+        location: 'chennai'
       },
       {
         id: 'iphone15',
@@ -71,6 +74,7 @@ export class LocalStorageServiceService {
         imageUrl: 'assets/iphone15.jpg',
         isTrash: false,
         inStock: false,
+        location: 'manglore'
       },
       {
         id: 'galaxys22Ultra',
@@ -84,6 +88,7 @@ export class LocalStorageServiceService {
         imageUrl: 'assets/galaxys22Ultra.webp',
         isTrash: false,
         inStock: false,
+        location: 'hydrabad'
       },
       {
         id: 'oneplus11r',
@@ -97,6 +102,7 @@ export class LocalStorageServiceService {
         imageUrl: 'assets/oneplus11r.jpg',
         isTrash: false,
         inStock: false,
+        location: 'delhi'
       },
     ]
     localStorage.setItem('data',JSON.stringify(data));

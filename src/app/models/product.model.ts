@@ -9,7 +9,8 @@ export class Product {
   rating: number;
   price: number;
   isTrash: boolean;
-  inStock: boolean
+  inStock: boolean;
+  location: string
 
   constructor(
     id: string,
@@ -22,7 +23,8 @@ export class Product {
     rating: number,
     price: number,
     isTrash: boolean,
-    inStock: boolean
+    inStock: boolean,
+    location: string,
   ) {
     this.name = name;
     this.id = id;
@@ -35,10 +37,11 @@ export class Product {
     this.imageUrl = imageUrl;
     this.isTrash = isTrash;
     this.inStock = inStock;
+    this.location = location;
   }
 }
 
 export interface AddPopupInjectedDataModel {
   mode: string;
-  productId: string;
+  productDetails: Product;
 }

@@ -14,7 +14,6 @@ export class ErrorService {
    * @returns boolean 
    */
   checkError(form: FormGroup, control:string) {
-    debugger;
     return form.get(control)?.invalid && (form.get(control)?.dirty || form.get(control)?.touched)
   }
 }
