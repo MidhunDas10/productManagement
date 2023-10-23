@@ -73,12 +73,17 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
   /**
-   * Function to handle Add product Button click event
+   * Function to handle Add/Edit product Button click event
+   * @param mode string
    */
-  onAddProductClick(): void {
+  openAddOrEditOverlay(mode: string, productId = null): void {
     this.dialog.open(AddProductComponent,  { //open add product pop up
       width: '800px',
       height: '750px',
+      data: {
+        mode: mode,
+        productId: productId
+      }
     }).afterClosed().subscribe(res => {
       this.getDataFromLocalstorage();
     })

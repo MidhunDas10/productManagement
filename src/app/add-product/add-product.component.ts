@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { Product } from '../models/product.model';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { AddPopupInjectedDataModel, Product } from '../models/product.model';
 
 @Component({
   selector: 'app-add-product',
@@ -12,10 +12,12 @@ export class AddProductComponent implements OnInit, OnDestroy {
 productForm!: FormGroup;
 products!: Product[];
 constructor(
+  @Inject(MAT_DIALOG_DATA) public data: AddPopupInjectedDataModel,
   private formBuilder : FormBuilder,
   private dialog : MatDialog,
 ) {}
 ngOnInit(): void {
+  console.log(this.data)
   this.initializeForm()
 }
 /**

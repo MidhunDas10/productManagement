@@ -37,3 +37,8 @@ export class Product {
     this.inStock = inStock;
   }
 }
+
+export interface AddPopupInjectedDataModel {
+  mode: string;
+  productId: string;
+}

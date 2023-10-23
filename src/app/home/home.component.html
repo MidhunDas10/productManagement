@@ -39,12 +39,15 @@
             <p> {{product.shortDescription}}</p>
           </mat-card-content>
           <mat-card-actions class="justify-content-end">
+            <button class="small" mat-icon-button matTooltip="Edit" (click)="openAddOrEditOverlay('edit',product.id )">
+              <mat-icon>edit</mat-icon>
+            </button>
             <button mat-raised-button class="small m-1 mat-mini-button" color="primary" >LIKE</button>
             <button  mat-raised-button class="small  m-1 mat-mini-button" color="warn" (click)="onRemoveClick(product)" >REMOVE</button>
           </mat-card-actions>
         </mat-card>
       </div>
-      <button  mat-fab class="add-button" class=" add-button" color="primary" (click)="onAddProductClick()" >
+      <button  mat-fab class="add-button" class=" add-button" color="primary" (click)="openAddOrEditOverlay('add')" >
         <mat-icon>add</mat-icon>
       </button>
     </div>
