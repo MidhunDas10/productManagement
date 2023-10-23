@@ -9,7 +9,7 @@
   </div>
 </div>
 <hr>
-<form class="m-4" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+<div class="m-4 form-group" [formGroup]="productForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="name">Name</label>
     <input
@@ -18,7 +18,9 @@
       formControlName="name"
       class="form-control"
       placeholder="Enter product name"
+      [class.is-invalid]="this.errorService.checkError(productForm,'name')"
     />
+    <div *ngIf="this.errorService.checkError(productForm,'name')" class="text-danger">Invalid Data.</div>
   </div>
 
   <div class="form-group">
@@ -27,9 +29,11 @@
       type="text"
       id="imageUrl"
       formControlName="imageUrl"
+      [class.is-invalid]="this.errorService.checkError(productForm,'imageUrl')"
       class="form-control"
       placeholder="Enter a valid image URL "
     />
+    <div *ngIf="this.errorService.checkError(productForm,'imageUrl')" class="text-danger">Invalid Data.</div>
   </div>
   <div class="form-group">
     <label for="shortDescription">Short description</label>
@@ -37,9 +41,11 @@
       type="text"
       id="shortDescription"
       formControlName="shortDescription"
+      [class.is-invalid]="this.errorService.checkError(productForm,'shortDescription')"
       class="form-control"
       placeholder="Enter a short description"
     />
+    <div *ngIf="this.errorService.checkError(productForm,'shortDescription')" class="text-danger">Invalid Data.</div>
   </div>
 
   <div class="form-group">
@@ -47,9 +53,11 @@
     <textarea
       id="description"
       formControlName="description"
+      [class.is-invalid]="this.errorService.checkError(productForm,'description')"
       class="form-control"
       placeholder="Enter a description (minimum 150 characters)"
     ></textarea>
+    <div *ngIf="this.errorService.checkError(productForm,'description')" class="text-danger">Invalid Data.</div>
   </div>
 
   <div class="form-group">
@@ -58,9 +66,11 @@
       type="number"
       id="price"
       formControlName="price"
+      [class.is-invalid]="this.errorService.checkError(productForm,'price')"
       class="form-control"
       placeholder="Enter price range"
     />
+    <div *ngIf="this.errorService.checkError(productForm,'price')" class="text-danger">Invalid Data.</div>
   </div>
 
   <div class="form-group">
@@ -69,10 +79,12 @@
       type="number"
       id="rating"
       formControlName="rating"
+      [class.is-invalid]="this.errorService.checkError(productForm,'rating')"
       class="form-control"
       min="1"
       max="5"
     />
+    <div *ngIf="this.errorService.checkError(productForm,'rating')" class="text-danger">Invalid Data.</div>
   </div>
 
   <div class="form-group">
@@ -81,15 +93,19 @@
       type="text"
       id="location"
       formControlName="location"
+      [class.is-invalid]="this.errorService.checkError(productForm,'location')"
       class="form-control"
       placeholder="Enter locations"
     />
+    <div *ngIf="this.errorService.checkError(productForm,'location')" class="text-danger">Invalid Data.</div>
   </div>
 
   <div class="form-group">
     <label for="inStock">In Stock</label>
-    <input type="checkbox" id="inStock" formControlName="inStock" />
+    <input type="checkbox" id="inStock" formControlName="inStock"
+    [class.is-invalid]="this.errorService.checkError(productForm,'inStock')" />
+    <div *ngIf="this.errorService.checkError(productForm,'inStock')" class="text-danger">Invalid Data.</div>
   </div>
 
-  <button type="submit" class="btn btn-primary">Add Product</button>
-</form>
+  <button [disabled]="productForm.invalid" type="button" (click)="onSubmit()" class="btn btn-primary">Add Product</button>
+</div>

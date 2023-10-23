@@ -50,7 +50,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     ReactiveFormsModule,
     MatSliderModule,
     FormsModule,
-    MatTooltipModule
+    MatTooltipModule,
 
   ],
   providers: [],
